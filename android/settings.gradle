@@ -1,0 +1,3 @@
+rootProject.name = 'aurityTestMobile'
+
+include ':app'
