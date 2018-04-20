@@ -28,13 +28,8 @@ class SearchScreen extends Component {
     let owner = String(splitedText[0]).toLowerCase()
     let repo = String(splitedText[1]).toLowerCase()
 
-    const reqConf = {
-      url: `https://api.github.com/repos/facebook/react/contributors`,
-      method: 'get',
-      headers: {
-        'Authorization': 'token 6b4f61cc6dcbf0a2948a43897ea95252d937319c'
-      }
-    }
+    const reqConf = utils.getApiRestConfig()
+		console.log('api rest config ',reqConf)
 
     axios(reqConf)
       .then(response => {
@@ -88,9 +83,8 @@ class SearchScreen extends Component {
 
 
   _onInputChange = (textValue) => {
-
     let { selectedOption } = this.state
-
+		
     if (selectedOption === 'contributors') {
       this._getContributors(textValue)
     } else if (selectedOption === 'repositories') {
