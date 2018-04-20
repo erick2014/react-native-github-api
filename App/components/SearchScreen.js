@@ -29,11 +29,9 @@ class SearchScreen extends Component {
     let repo = String(splitedText[1]).toLowerCase()
 
     const reqConf = utils.getApiRestConfig()
-		console.log('api rest config ',reqConf)
 
     axios(reqConf)
       .then(response => {
-        console.log('response for request ', response)
         if (response.data.length) this.setState({ recordsFound: response.data })
       })
       .catch(error => {
